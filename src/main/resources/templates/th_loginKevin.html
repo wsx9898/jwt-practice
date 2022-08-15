@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>簡易會員登入</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+	<!-- Mobile Specific -->
+	<meta name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- CSS Style -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/font-face-css.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/owl.carousel.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/jquery.mobile-menu.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/revslider.css}">
+	<!-- Google Fonts -->
+	<!-- Kevin CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/kevin.css}">
+	<link
+			href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+			rel="stylesheet">
+	<link
+			href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+			rel="stylesheet">
+	<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js}"></script>
+	<script th:src="@{/jq/jquery-3.6.0.js}"></script>
+	<script th:src="@{/jq/jquery-migrate-1.4.1.js}"></script>
+
+
+</head>
+<body>
+
+<h1>LoginKevin.html</h1>
+
+<form th:action="@{/kevinLogin}" method="get">
+<table>
+	<tr>
+		<td>ID : </td>
+		<td><input type="text" name="username" value=""></td>
+	</tr>
+	<tr>
+		<td>PWD : </td>
+		<td><input type="text" name="password" value=""></td>
+	</tr>
+	<tr>
+		<td align="right"><input type="submit" value="Login"></td>
+	</tr>
+</table>
+</form>
+
+<!-- JavaScript -->
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/revslider.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/jquery.mobile-menu.min.js}"></script>
+<!-- JavaScript DIY-->
+<script th:src="@{/js/removeItem.js}"></script>
+<script th:src="@{/js/appendItem.js}"></script>
+
+</body>
+</html>

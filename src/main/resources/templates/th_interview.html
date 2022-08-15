@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>面試介面</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+    <!-- Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS Style -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery.mobile-menu.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <!-- Kevin CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/kevin.css}">
+    <!-- jquery -->
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js}"></script>
+</head>
+<body>
+    <button class="btn-primary rounded btn-lg" onclick="callBySearchButton()">查詢資料</button>
+    <button class="btn-primary rounded btn-lg" onclick="appendInsertForm()">新增資料</button>
+
+    <div>
+        <table class="table">
+            <div id="putHere1"></div>
+        </table>
+    </div>
+
+    <script>
+        var cnt = 0;
+        var data;
+
+        function callBySearchButton() {
+            //Empty before appending
+            emptyAll();
+
+            //calling backend
+            var settings = {
+                "url": "http://localhost:8081/boot/getAllData",
+                "method": "GET",
+                "timeout": 0,
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+                data = JSON.parse(response);
+
+                data.forEach(function (e) {
+                    console.log(e.base64);
+                    appendData(e.idx, e.aes256, e.base64);
+                });
+            });
+            //calling backend
+
+            $("#putHere1").append(`
+                <thead>
+                    <tr>
+                        <th>idx</th>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+
+                <tbody id="putHere2">
+                </tbody>
+            `)
+        }
+
+        function appendData(idx, aes256, base64) {
+            //Append things
+            $("#putHere2").append(
+                `
+                    <tr id="item${cnt}" >
+                        <td>${idx}</td>
+                        <td>${base64.key}</td>
+                        <td>${base64.value}</td>
+                    </tr>
+            `)
+        }
+
+        function appendInsertForm() {
+            //Empty before appending
+            emptyAll();
+
+            $('#putHere1').append(`
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">insert Data</h5>
+                            <button type="button" class="close" aria-label="Close" onclick="emptyAll()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="key">Key</label>
+                                </div>
+                                <div class="col-6">
+                                    <input id="key" type="text" name="key" value="">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="value">Value</label>
+                                </div>
+                                <div class="col-6">
+                                    <input id="value" type="text" name="value" value="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-6">
+                                    <button class="button" onclick="clearInput()">Cancel</button>
+                                </div>
+
+                                <div class="col-6">
+                                    <button class="button" onclick="sendInputData()">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    `)
+        }
+
+
+        function sendInputData() {
+            var keyFromInput = $('#key').val();
+            var valueFromInput = $('#value').val();
+
+            console.log("keyFromInput = " + keyFromInput);
+            console.log("valueFromInput = " + valueFromInput);
+            //send Input data to backend
+            var settings = {
+                "url": "http://localhost:8081/boot/insertData",
+                "method": "PUT",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify(
+                    {
+                        "key": `${keyFromInput}`,
+                        "value": `${valueFromInput}`
+                    }
+                ),
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
+
+            clearInput();
+        }
+
+        function clearInput() {
+            $('input[type=text]').val('');
+        }
+
+        function emptyAll() {
+            $('#putHere1').empty();
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>測試會員後端介面</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <!-- Mobile Specific -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS Style -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font-face-css.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/owl.carousel.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery.mobile-menu.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/revslider.css}">
+    <!-- Google Fonts -->
+    <!-- Kevin CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/kevin.css}">
+    <link
+            href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+            rel="stylesheet">
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js}"></script>
+    <script th:src="@{/jq/jquery-3.6.0.js}"></script>
+    <script th:src="@{/jq/jquery-migrate-1.4.1.js}"></script>
+
+
+    <script type="text/javascript">
+        function clearForm() {
+            var inputs = document.getElementsByTagName("input");
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].type == "text") {
+                    inputs[i].value = "";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>這是HTML版本註冊</h1>
+<div id="page">
+    <!-- main-container -->
+    <div class="main-container col2-right-layout">
+        <div class="main container">
+            <div class="row">
+                <section class="col-sm-9">
+                    <div class="col-main">
+                        <div class="page-title">
+                            <h2>註冊</h2>
+                        </div>
+                        <div class="static-contain">
+                            <!-- 這邊要更改url!!! -->
+                            <form action="#" th:action="@{/pages/register/registerForm.controller}" method="get">
+                            <fieldset class="group-select">
+                                <ul>
+                                    <li id="billing-new-address-form">
+                                        <fieldset>
+                                            <ul>
+                                                <li>
+                                                    <div class="input-box member-account">
+                                                        <label for="memberAccouuntTemp">帳 號<span class="required">*</span></label>
+                                                        <br> <input type="text" id="memberAccouuntTemp"
+                                                                            name="memberAccouuntTemp" value=""
+                                                                            title="Account" class="input-text ">
+                                                        <br>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div class="input-box member-password">
+                                                        <label for="memberPasswordTemp">密 碼<span class="required">*</span></label>
+                                                        <br>
+                                                            <input type="text" id="memberPasswordTemp"
+                                                                            name="memberPasswordTemp" value=""
+                                                                            title="Password" class="input-text">
+                                                        <br>
+                                                    </div>
+
+                                                </li>
+                                                <hr>
+                                                <li>
+                                                    <div class="customer-name">
+                                                        <div class="input-box name-lastname">
+                                                            <label for="memberLastnameTemp">姓 氏<span class="required">*</span></label>
+                                                            <br>
+                                                                <input type="text" id="memberLastnameTemp" name="memberLastnameTemp"
+                                                                  value="" title="Last Name" class="input-text ">
+                                                            <br>
+                                                        </div>
+                                                        <div class="input-box name-firstname">
+                                                            <label for="memberFirstnameTemp">名 字<span class="required">*</span></label>
+                                                            <br>
+                                                                <input type="text" id="memberFirstnameTemp" name="memberFirstnameTemp"
+                                                                       value="" title="First Name" class="input-text">
+                                                            <br>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div class="input-box">
+                                                        <label for="memberBirthTemp">生 日</label>
+                                                        <br>
+                                                            <input
+                                                            type="text" id="memberBirthTemp" name="memberBirthTemp"
+                                                            value="" title="Birthday"
+                                                            class="input-text">
+                                                        <br>
+                                                    </div>
+
+                                                    <div class="input-box">
+                                                        <label f>性 別</label>
+                                                        <br>
+                                                        <input type="radio" id="man" name="memberGenderTemp" value="male" checked>
+                                                        <label for="man">男生</label><br>
+                                                        <input type="radio" id="woman" name="memberGenderTemp" value="female">
+                                                        <label for="woman">女生</label><br>
+                                                        <br>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="input-box">
+                                                        <label for="memberNicknameTemp">暱 稱</label>
+                                                        <br>
+                                                            <input type="text" id="memberNicknameTemp"
+                                                                   name="memberNicknameTemp" value=""
+                                                                   title="NickName" class="input-text ">
+                                                        <br>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="input-box">
+                                                        <label for="memberEmailTemp">電子信箱 <span class="required">*</span></label>
+                                                        <br>
+                                                            <input type="text" name="memberEmailTemp"
+                                                                   id="memberEmailTemp" value="" title="Email Address"
+                                                                   class="input-text validate-email">
+                                                        <br>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div class="input-box">
+                                                        <label for="memberTelTemp">手 機 </label>
+                                                        <br>
+                                                            <input type="text" name="memberTelTemp" id="memberTelTemp"
+                                                                   value="" title="Cellphone"
+                                                                   class="input-text required-entry">
+                                                        <br>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <label>地 址 </label>
+                                                    <br>
+                                                        <input type="text" title="Street Address" id="memberAddrTemp"
+                                                               name="memberAddrTemp" value=""
+                                                               class="input-text required-entry">
+                                                    <br>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
+                                    </li>
+                                    <li class="require"><em class="required">* </em>必填</li>
+                                   <li class="buttons-set">
+                                        <button type="submit" name="prodaction" value="提交">提交按鈕(功能一樣)</button>
+                                    </li>
+                                </ul>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="submit" name="prodaction" value="提交">
+                                            <input type="button" value="Clear" onclick="clearForm()">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!--End main-container -->
+</div>
+
+<script>
+    var settings = {
+        "url": "http://localhost:8081/boot/dashboardGetMemberId",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Authorization": "Basic PEJhc2ljIEF1dGggVXNlcm5hbWU+OjxCYXNpYyBBdXRoIFBhc3N3b3JkPg==",
+        },
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log("從session拿到的id為："+response);
+    });
+
+
+
+
+</script>
+
+
+<!-- JavaScript -->
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/revslider.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/jquery.mobile-menu.min.js}"></script>
+<!-- JavaScript DIY-->
+<script th:src="@{/js/removeItem.js}"></script>
+<script th:src="@{/js/appendItem.js}"></script>
+</body>
+</html>
